@@ -31,7 +31,12 @@ export default function ShoppingCart(){
       <div>
         <h1 className="font-bold text-4xl pb-10">Seu carrinho</h1>
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-16 mb-20">
-          <div className="border border-gray-300 rounded-xl h-auto w-auto sm:w-[630px] "> 
+          {cart.length === 0 ? (
+            <div className="border border-gray-300 items-center justify-center rounded-xl h-auto w-auto sm:w-[630px] ">
+              <p>Nehum item no carrinho</p>
+            </div>
+          ) : (
+            <div className="border border-gray-300 rounded-xl h-auto w-auto sm:w-[630px] "> 
             {cart.map((item, index) => {
               return (
                 <>
@@ -60,6 +65,8 @@ export default function ShoppingCart(){
               )
             })}
           </div>
+          )}
+          
           <div className="border border-gray-300 rounded-xl h-96 w-[auto] max-w-[450px] p-5"> 
             <div className="flex flex-col items-start justify-between">
               <p className="text-xl font-bold">Sumário</p>
