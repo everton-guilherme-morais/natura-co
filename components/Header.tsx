@@ -5,7 +5,8 @@ import Link from "next/link"
 import { useCart } from '@/context/CartContext';
 import { redirect, usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useState, useCallback, useEffect } from "react";
-import { searchProducts } from '@/actions/getSearchProducts';
+import { getSearchProducts } from '@/api/product/route';
+import { useDebounceCallback } from 'usehooks-ts';
 
 import {
   Select,
@@ -44,23 +45,31 @@ export default function Header() {
     replace(`${pathname}?${params.toString()}`);
   }, [searchTerm, category, searchParams, pathname, replace]);
 
+  const debouncedUpdateSearchParams = useDebounceCallback(updateSearchParams, 500);
+
+  useEffect(() => {
+    debouncedUpdateSearchParams();
+  }, [searchTerm, category, debouncedUpdateSearchParams]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        await getSearchProducts(params);
+      } catch (error) {
+        console.error('Error fetching products', error);
+      }
+    };
+
+    fetchProducts();
+  }, [searchTerm, category]);
+
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
   };
 
   const handleCategoryChange = (value: string) => {
     setCategory(value);
-    const params = new URLSearchParams(searchParams);
-    if (value) {
-      params.set('category', value);
-    } else {
-      params.delete('category');
-    }
-    replace(`${pathname}?${params.toString()}`);
-  };
-
-  const handleSearchClick = () => {
-    updateSearchParams();
   };
 
   return (
@@ -102,8 +111,7 @@ export default function Header() {
                 className="text-black"
               />
               <Search 
-                className="text-black cursor-pointer" 
-                onClick={handleSearchClick}
+                className="text-black cursor-pointer"
               />
             </div>
             <Link href="/shoppingCart" className="flex items-center justify-between">

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { searchProducts } from '../actions/getSearchProducts';
+import { searchProducts } from '../api/getSearchProducts';
 
 export const useSearchParams = () => {
   const [searchParams, setSearchParams] = useState<URLSearchParams>(new URLSearchParams());
