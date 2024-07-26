@@ -1,5 +1,8 @@
+'use client'
+
 import Image from "next/image"
 import Link from "next/link"
+import { useCart } from '@/context/CartContext';
 
 import {
   Select,
@@ -17,6 +20,8 @@ import {ShoppingCart, CircleUser} from 'lucide-react'
 import { Separator } from "./ui/separator"
 
 export default function Header() {
+  const { cart } = useCart();
+  
   return (
     <>
       <header className="py-8 xl:py-9 text-white container mx-auto">
@@ -39,9 +44,9 @@ export default function Header() {
             <SelectContent>
               <SelectGroup>
                 <SelectItem value="grapes">Todos os produtos</SelectItem>
-                <SelectItem value="apple">Perfumes masculinos</SelectItem>
-                <SelectItem value="banana">Perfumes femininos</SelectItem>
-                <SelectItem value="blueberry">Cremes corporais</SelectItem>
+                <SelectItem value="apple">Produtos masculinos</SelectItem>
+                <SelectItem value="banana">Produtos femininos</SelectItem>
+                <SelectItem value="blueberry">Infantil</SelectItem>
                 <SelectItem value="pineapple"></SelectItem>
               </SelectGroup>
             </SelectContent>
@@ -51,7 +56,7 @@ export default function Header() {
             <Input type="email" placeholder="O que está buscando hoje ?" />
             <Link href="/shoppingCart" className="flex items-center justify-between">
               <ShoppingCart className="text-black" cursor={"pointer"}/>
-              <p className="text-base pb-5 text-black font-bold">5</p>
+                <p className="text-base pb-5 text-black font-bold">{cart.length}</p>
             </Link>
             <Link href="/">
               <CircleUser className="text-black" cursor={"pointer"}/>
