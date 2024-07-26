@@ -1,3 +1,5 @@
+'use client'
+
 import { Product } from '@/types/product';
 import axios from 'axios';
 
@@ -17,10 +19,10 @@ export const getSearchProducts = async (searchParams: URLSearchParams): Promise<
   }
 };
 
-
-export const getAllProducts = async (): Promise<Product[]> => {
+export const getProduct = async (id: string) => {
+  const idProduct = Number(id)
   try {
-    const response = await axios.get<Product[]>(`http://localhost:3001/products`, {
+    const response = await axios.get<Product>(`http://localhost:3001/products/${idProduct}`, {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -28,7 +30,7 @@ export const getAllProducts = async (): Promise<Product[]> => {
 
     return response.data;
   } catch (error) {
-    console.error('Failed to search products', error);
-    throw new Error('Failed to search products');
+    console.error('Failed to fetch product', error);
+    throw new Error('Failed to fetch product');
   }
-};
+}

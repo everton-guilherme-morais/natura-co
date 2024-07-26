@@ -1,51 +1,40 @@
 'use client'
 
-import { createContext, useState, useContext, ReactNode, useEffect } from 'react';
-import { getAllProducts } from '@/api/product/route';
+import React, { createContext, useState, useEffect, useMemo, ReactNode } from 'react';
+import axios from 'axios';
 import { Product } from '@/types/product';
 
 interface ProductContextType {
   products: Product[];
-  setProducts: (products: Product[]) => void;
-  fetchProducts: () => void;
 }
+
+export const ProductContext = createContext<ProductContextType>({ products: [] });
 
 interface ProductProviderProps {
-  children: ReactNode;
-  initialProducts?: Product[];
+  children: ReactNode; // Defina o tipo de children
 }
 
-const ProductContext = createContext<ProductContextType | undefined>(undefined);
-
-export function ProductProvider({ children, initialProducts = [] }: ProductProviderProps) {
-  const [products, setProducts] = useState<Product[]>(initialProducts);
+export const ProductProvider: React.FC<ProductProviderProps> = ({ children }) => {
+  const [products, setProducts] = useState<Product[]>([]);
 
   const fetchProducts = async () => {
     try {
-      const fetchedProducts = await getAllProducts();
-      setProducts(fetchedProducts);
+      const response = await axios.get('http://localhost:3001/products');
+      setProducts(response.data);
     } catch (error) {
-      console.error('Failed to fetch products', error);
+      console.error('Erro ao buscar produtos:', error);
     }
   };
 
+  const memoizedFetchProducts = useMemo(() => fetchProducts, []);
+
   useEffect(() => {
-    if (initialProducts.length === 0) {
-      fetchProducts();
-    }
-  }, [initialProducts]);
+    memoizedFetchProducts();
+  }, [memoizedFetchProducts]);
 
   return (
-    <ProductContext.Provider value={{ products, setProducts, fetchProducts }}>
+    <ProductContext.Provider value={{ products }}>
       {children}
     </ProductContext.Provider>
   );
-}
-
-export function useProducts() {
-  const context = useContext(ProductContext);
-  if (context === undefined) {
-    throw new Error('useProducts must be used within a ProductProvider');
-  }
-  return context;
-}
+};
