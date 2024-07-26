@@ -436,7 +436,7 @@ export default function ListProducts(){
         { id: 2, description: 'Acessório exclusivo' },
       ],
       stateProduct: '',
-      sex: 'Ambos'
+      sex: 'Infantil'
     },
     {
       id: 15,
@@ -496,7 +496,7 @@ export default function ListProducts(){
         { id: 2, description: 'Ritual de barba e perfumação' },
       ],
       stateProduct: '',
-      sex: 'Ambos'
+      sex: 'Infantil'
     },
     {
       id: 17,
@@ -526,7 +526,7 @@ export default function ListProducts(){
         { id: 2, description: 'Dermatologicamente testado' },
       ],
       stateProduct: '',
-      sex: 'Ambos'
+      sex: 'Infantil'
     },
     {
       id: 18,
@@ -676,7 +676,7 @@ export default function ListProducts(){
         { id: 2, description: 'Produtos veganos' },
       ],
       stateProduct: '',
-      sex: 'Ambos'
+      sex: 'Infantil'
     },
   ]
 

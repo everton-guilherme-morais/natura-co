@@ -725,10 +725,14 @@ export default function DetailsProduct({ params }: { params: { id: string } }) {
 
   return (
     <div className='py-8 xl:py-9 container mx-auto'>
-      <div className='grid grid-cols-1 lg:grid-cols-2'>
-        <Image src={product.imageCover} alt='product' width={500} height={500} className='rounded-xl object-cover w-[400] h-[400]' />
+      <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-0'>
+        <div className='mx-auto xl:w-[600px] flex items-center justify-center'>
+          <Image src={product.imageCover} alt='product' width={400} height={100} className='rounded-xl object-cover' />
+        </div>
         <div className='flex flex-1 flex-col gap-4 items-start'>
           <h2 className='font-bold text-4xl'>{product.name}</h2>
+          <p className='text-xs'>{product.brand}</p>
+          <div className='rounded-3xl text-[10px] bg-[#194B73] text-white font-bold px-2 py-1'>{product.stateProduct}</div>
           <p className='text-lg font-semibold'>R$ {product.priceWithDiscount}</p>
           <StarRating stars={products[0].stars} />
           <p className='text-base text-gray-700'>{product.description}</p>
