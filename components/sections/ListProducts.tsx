@@ -14,7 +14,7 @@ import StarRating from "../StarsRating";
 
 import Link from "next/link";
 
-export default function ListProducts(){
+function ListProducts(){
   const { products = [] } = useContext(ProductContext);
   const [loading, setLoading] = useState(products.length === 0);
 
@@ -25,7 +25,6 @@ export default function ListProducts(){
   }, [products]);
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
       <section className="container mx-auto">
         <div className="flex flex-col items-center justify-center mb-24">
           <h3 className="font-bold text-2xl pb-10">Descubra as fragrâncias que combinam com você</h3>
@@ -85,6 +84,13 @@ export default function ListProducts(){
           </div>
         </div>
       </section>
+  )
+}
+
+export default function SuspenseListProduct() {
+  return (
+    <Suspense>
+      <ListProducts />
     </Suspense>
   )
 }

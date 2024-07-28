@@ -142,7 +142,7 @@ function ShoppingCart(){
   )
 }
 
-export function SuspenseCart() {
+export default function SuspenseCart() {
   return (
     <Suspense>
       <ShoppingCart />

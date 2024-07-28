@@ -34,7 +34,7 @@ function getSessionId() {
   return sessionId;
 }
 
-export default function Header() {
+function Header() {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -66,7 +66,6 @@ export default function Header() {
   }
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
       <header className="py-8 xl:py-9 text-white container mx-auto">
         <div className="flex flex-1 flex-row items-center w-full gap-2">
           {/* Logo e Select */}
@@ -119,6 +118,13 @@ export default function Header() {
         </div>
         <Separator className="my-4 bg-gray-300" />
       </header>
-    </Suspense>
   );
+}
+
+export default function SuspenseHeader(){
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Header />
+    </Suspense>
+  )
 }

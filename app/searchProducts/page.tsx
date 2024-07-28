@@ -11,7 +11,7 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { getSearchProducts } from '@/api/product/route';
 
-export default function SearchProducts() {
+function SearchProducts() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const searchParams = useSearchParams();
@@ -49,7 +49,6 @@ export default function SearchProducts() {
   
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
       <section className="container mx-auto mb-20">
         <div className="flex flex-1 flex-col gap-10">
           <div className="flex flex-row items-center gap-3">
@@ -91,6 +90,13 @@ export default function SearchProducts() {
           )}
         </div>
       </section>
+  )
+}
+
+export default function SuspenseSearchProducts() {
+  return (
+    <Suspense>
+      <SearchProducts />
     </Suspense>
   )
 }
