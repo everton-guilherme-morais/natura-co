@@ -72,9 +72,9 @@ export default function Header() {
   return (
     <>
       <header className="py-8 xl:py-9 text-white container mx-auto">
-        <div className="container mx-auto flex flex-row items-center">
+        <div className="flex flex-1 flex-row items-center w-full gap-2">
           {/* Logo e Select */}
-          <div className="flex flex-1 flex-row gap-2 xl:gap-10 items-center">
+          <div className="flex flex-1 flex-row gap-0 xl:gap-10 items-center">
             <Link href="/">
               <Image
                 src="/images/logo-natura.png"
@@ -97,7 +97,7 @@ export default function Header() {
               </SelectContent>
             </Select>
           </div>
-          <div className="flex flex-1 items-center gap-5">
+          <div className="flex flex-1 items-center gap-5 justify-end">
             <div className="flex flex-row items-center bg-[#E0E0E0] rounded-full">
               <div className="p-4 bg-orange-300 rounded-full cursor-pointer" onClick={handleSearchName}>
                 <Search 
@@ -109,16 +109,15 @@ export default function Header() {
                 placeholder="O que está buscando hoje ?"
                 value={searchTerm}
                 onChange={e => setSearchTerm(e.target.value)}
-                className="text-black "
+                className="text-black w-28 sm:w-auto"
               />
-              
             </div>
             <Link href="/shoppingCart" className="flex items-center justify-between">
               <ShoppingCart className="text-black" cursor={"pointer"} />
               <p className="text-base pb-5 text-black font-bold">{cart.length}</p>
             </Link>
             <Link href="/">
-              <CircleUser className="text-black" cursor={"pointer"} />
+              <CircleUser className="text-black hidden sm:flex" cursor={"pointer"} />
             </Link>
           </div>
         </div>
