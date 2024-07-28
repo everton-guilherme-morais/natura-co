@@ -58,22 +58,22 @@ export default function SearchProducts() {
         {loading ? (
           <div className="flex items-center justify-center w-full h-[150px] font-medium">Carregando...</div>
         ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
             {products.map((product) => (
-              <div key={product.id} className="flex flex-col h-full items-center justify-center gap-5">
+              <div key={product.id} className="flex flex-col h-full w-full items-baseline justify-center gap-5">
                 <div className='relative'>
                   <Image
                     src={product.imageCover}
                     alt={product.name}
                     className="block h-full w-full object-cover rounded-xl"
-                    width={150}
+                    width={250}
                     height={300}
                   />
                   <Link href={`/detailsProduct/${product.id}`} className='absolute top-[90%] left-[80%] bg-[#f48646] rounded-full p-3 cursor-pointer'>
                     <ShoppingBag className='text-white' />
                   </Link>
                 </div>
-                <div className="flex flex-col w-full">
+                <div className="flex flex-col items-start w-auto">
                   <h1 className="flex font-bold">{product.name}</h1>
                   <div className="flex flex-row gap-2">
                     <StarRating stars={product.stars} />

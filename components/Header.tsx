@@ -30,25 +30,18 @@ export default function Header() {
   const [category, setCategory] = useState(searchParams.get('category') || '');
   const { cart } = useCart();
 
-  function handleSearchName(value: string) {
-    const name = new URLSearchParams(searchParams)
-
-    if(value === '') {
-      name.delete('name')
+  function handleSearchName() {
+    const name = new URLSearchParams(searchParams);
+    if (searchTerm === '') {
+      name.delete('name');
     } else {
-      name.set('name', value)
+      name.set('name', searchTerm);
     }
 
-    router.push(`${pathname}?${name.toString()}`)
-    router.push(`/searchProducts?${category.toString()}`)
-  }
-
-  function sendSearchName() {
-
+    router.push(`/searchProducts?${name.toString()}`);
   }
 
   function handleCategory(value: string) {
-    console.log(value)
     const category = new URLSearchParams(searchParams)
 
     if(value === '') {
@@ -77,11 +70,10 @@ export default function Header() {
             </Link>
             <Select onValueChange={handleCategory}>
               <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="Selecione os Produtos" />
+                <SelectValue placeholder="Selecione a categoria" />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
-                  <SelectItem value="Todos">Todos os produtos</SelectItem>
                   <SelectItem value="Masculino">Produtos masculinos</SelectItem>
                   <SelectItem value="Feminino">Produtos femininos</SelectItem>
                   <SelectItem value="Infantil">Infantil</SelectItem>
@@ -94,10 +86,12 @@ export default function Header() {
               <Input
                 type="text"
                 placeholder="O que está buscando hoje ?"
-                onChange={e => handleSearchName(e.target.value)}
+                value={searchTerm}
+                onChange={e => setSearchTerm(e.target.value)}
                 className="text-black"
               />
-              <Search
+              <Search 
+                onClick={handleSearchName}
                 className="text-black cursor-pointer"
               />
             </div>

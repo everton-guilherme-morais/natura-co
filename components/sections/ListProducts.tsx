@@ -39,7 +39,6 @@ export default function ListProducts(){
               disableOnInteraction: true,
             }}
             modules={[Autoplay, Navigation, Pagination]}
-            // className="h-96 w-full rounded-lg"
             breakpoints={{
               1264: {
                 slidesPerView: 4,
