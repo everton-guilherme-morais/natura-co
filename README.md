@@ -1,36 +1,102 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Natura E-commerce Clone
+<img src="public/images/natura-logo-vector.png" alt="Home Page" width="400">
 
-## Getting Started
+Este projeto é um clone do site de e-commerce da Natura, desenvolvido em 4 dias. O objetivo é listar produtos, permitir filtragem por categorias (Masculino, Feminino, Infantil) e busca por texto, visualizar detalhes do produto, adicionar produtos ao carrinho e finalizar a compra. O design e algumas informações são inspirados no site oficial da Natura.
 
-First, run the development server:
+## Funcionalidades
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Listagem de Produtos**: Navegue por uma variedade de produtos com opções de filtragem por categoria e busca por nome do produto.
+- **Detalhes do Produto**: Veja informações detalhadas sobre um produto, incluindo nome, marca, preço, avaliações e informações adicionais.
+- **Adicionar ao Carrinho**: Adicione produtos ao carrinho e veja a contagem de itens no carrinho atualizar em tempo real.
+- **Carrinho de Compras**: Visualize todos os produtos adicionados ao carrinho, com o preço total calculado com base nas quantidades dos produtos.
+- **Finalizar Compra**: Complete a compra enviando os itens do carrinho para o backend, que então limpa o carrinho e redireciona para a página inicial.
+- **Design Responsivo**: Todas as páginas são responsivas e otimizadas para vários dispositivos.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tecnologias Utilizadas
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Frontend
+- **React**
+- **Next.js**
+- **TypeScript**
+- **JavaScript**
+- **Tailwind CSS**
+- **Shadcn**
+- **Lucide React**
+- **Swiper**
+- **Zod**
+- **Cloudflare** (para hospedagem das imagens dos produtos)
+- **Axios**
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Backend
+- **NestJS**
+- **Node.js**
+- **TypeScript**
+- **Prisma**
 
-## Learn More
+### Banco de Dados
+- **Banco Relacional** hospedado na **Vercel**
 
-To learn more about Next.js, take a look at the following resources:
+## Páginas
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Home (Desk / Tablet)
+<img src="public/images/project/home-desk.png" alt="Home Page" width="400">
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+<img src="public/images/project/home-tablet.png" alt="Home Page" width="400">
 
-## Deploy on Vercel
+### Listagem de Produtos Filtrados (Desk / Tablet)
+<img src="public/images/project/listage-produtos-filtrados-desk.png" alt="Home Page" width="400">
+<img src="public/images/project/lista-produtos-filtrados-tablet.png" alt="Home Page" width="400">
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Detalhes do Produto (Desk / Tablet)
+<img src="public/images/project/detalhes-produto-desk.png" alt="Home Page" width="400">
+<img src="public/images/project/detalhes-produto-tablet.png" alt="Home Page" width="400">
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Carrinho (Desk / Tablet)
+<img src="public/images/project/carrinho-desk.png" alt="Home Page" width="400">
+<img src="public/images/project/carrinho-tablet.png" alt="Home Page" width="400">
+
+## Configuração do Projeto
+
+1. Clone o repositório:
+    ```bash
+    git clone https://github.com/seuusuario/natura-ecommerce-clone.git
+    ```
+
+2. Instale as dependências do frontend:
+    ```bash
+    cd frontend
+    npm install
+    ```
+
+3. Instale as dependências do backend:
+    ```bash
+    cd backend
+    npm install
+    ```
+
+4. Configure o banco de dados:
+    ```bash
+    npx prisma migrate deploy
+    ```
+
+5. Inicie o servidor de desenvolvimento do frontend:
+    ```bash
+    npm run dev
+    ```
+
+6. Inicie o servidor de desenvolvimento do backend:
+    ```bash
+    npm run start:dev
+    ```
+
+## Uso
+
+- **Navegar pelos Produtos**: Navegue até a página inicial para ver os produtos. Use os filtros de categoria e a barra de busca para encontrar produtos específicos.
+- **Ver Detalhes do Produto**: Clique em um produto para ver suas informações detalhadas.
+- **Adicionar ao Carrinho**: Clique no botão "Adicionar ao Carrinho" na página de detalhes do produto para adicioná-lo ao carrinho.
+- **Visualizar Carrinho**: Clique no ícone do carrinho no cabeçalho para ver os produtos no seu carrinho.
+- **Finalizar Compra**: Clique no botão "Finalizar compra" no carrinho para completar a compra. Isso enviará os itens do carrinho para o backend e limpará o carrinho.
+
+## Conclusão
+
+Este projeto demonstra a implementação de um site de e-commerce simples com funcionalidades essenciais, como listagem de produtos, filtragem, visualização de detalhes, adição ao carrinho e finalização da compra. O projeto é totalmente responsivo e usa tecnologias web modernas para garantir uma experiência de usuário suave.
