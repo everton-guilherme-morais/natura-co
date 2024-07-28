@@ -17,5 +17,4 @@ export interface Product {
   priceWithDiscount: string, /*Preço com desconto*/
   quantity: number; /*Quantidade*/
   stateProduct?: string, /*Estado do produto*/
-  sex: string
 }

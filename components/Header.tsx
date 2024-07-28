@@ -21,14 +21,30 @@ import { Input } from "@/components/ui/input";
 import { ShoppingCart, CircleUser, Search } from 'lucide-react';
 import { Separator } from "./ui/separator";
 
+function generateSessionId() {
+  return '_' + Math.random().toString(36).substr(2, 9);
+}
+
+function getSessionId() {
+  let sessionId = localStorage.getItem('sessionId');
+  if (!sessionId) {
+    sessionId = generateSessionId();
+    localStorage.setItem('sessionId', sessionId);
+  }
+  return sessionId;
+}
+
 export default function Header() {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
   const [searchTerm, setSearchTerm] = useState(searchParams.get('name') || '');
-  const [category, setCategory] = useState(searchParams.get('category') || '');
   const { cart } = useCart();
+
+  useEffect(() => {
+    const sessionId = getSessionId();
+  }, []);
 
   function handleSearchName() {
     const name = new URLSearchParams(searchParams);
@@ -82,18 +98,20 @@ export default function Header() {
             </Select>
           </div>
           <div className="flex flex-1 items-center gap-5">
-            <div className="flex flex-row items-center gap-2">
+            <div className="flex flex-row items-center bg-[#E0E0E0] rounded-full">
+              <div className="p-4 bg-orange-300 rounded-full cursor-pointer" onClick={handleSearchName}>
+                <Search 
+                  className="text-black cursor-pointer"
+                />
+              </div>
               <Input
                 type="text"
                 placeholder="O que está buscando hoje ?"
                 value={searchTerm}
                 onChange={e => setSearchTerm(e.target.value)}
-                className="text-black"
+                className="text-black "
               />
-              <Search 
-                onClick={handleSearchName}
-                className="text-black cursor-pointer"
-              />
+              
             </div>
             <Link href="/shoppingCart" className="flex items-center justify-between">
               <ShoppingCart className="text-black" cursor={"pointer"} />
