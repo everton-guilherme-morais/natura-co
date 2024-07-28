@@ -95,7 +95,7 @@ function SearchProducts() {
 
 export default function SuspenseSearchProducts() {
   return (
-    <Suspense>
+    <Suspense fallback={<div>Loading...</div>}>
       <SearchProducts />
     </Suspense>
   )

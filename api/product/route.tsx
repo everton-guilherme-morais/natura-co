@@ -7,7 +7,7 @@ import axios from 'axios';
 export const getSearchProducts = async (searchParams: URLSearchParams): Promise<Product[]> => {
   const query = searchParams.toString();
   try {
-    const response = await axios.get<Product[]>(`http://localhost:3001/products/search?${query}`, {
+    const response = await axios.get<Product[]>(`https://web-production-b544b.up.railway.app/products/search?${query}`, {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -25,7 +25,7 @@ export const getSearchProducts = async (searchParams: URLSearchParams): Promise<
 export const getProduct = async (id: string): Promise<Product> => {
   const idProduct = Number(id)
   try {
-    const response = await axios.get<Product>(`http://localhost:3001/products/${idProduct}`, {
+    const response = await axios.get<Product>(`https://web-production-b544b.up.railway.app/products/${idProduct}`, {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -47,7 +47,7 @@ export const postProductInCar = async (sessionId: string, products: Product[]) =
 
     console.log(payload, 'payload')
 
-    const response = await axios.post('http://localhost:3001/products/cart', payload, {
+    const response = await axios.post('https://web-production-b544b.up.railway.app/products/cart', payload, {
       headers: {
         'Content-Type': 'application/json',
       },

@@ -144,7 +144,7 @@ function ShoppingCart(){
 
 export default function SuspenseCart() {
   return (
-    <Suspense>
+    <Suspense fallback={<div>Loading...</div>}>
       <ShoppingCart />
     </Suspense>
   )

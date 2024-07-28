@@ -89,7 +89,7 @@ function ListProducts(){
 
 export default function SuspenseListProduct() {
   return (
-    <Suspense>
+    <Suspense fallback={<div>Loading...</div>}>
       <ListProducts />
     </Suspense>
   )
