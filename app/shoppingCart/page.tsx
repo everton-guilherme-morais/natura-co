@@ -37,7 +37,14 @@ function ShoppingCart(){
 
     if (!sessionId) {
       console.error('Session ID not found');
-      alert('Ocorreu um erro ao finalizar a compra. Tente novamente.');
+      toast({
+        description: (
+          <div className="flex items-center space-x-2">
+            <Image alt="" className="h-10" src="/images/image-natura.png" width={50} height={50}/>
+            <span className="font-bold">Ocorreu um erro ao finalizar a compra. Tente novamente.</span>
+          </div>
+        ),
+      });
       return;
     }
 

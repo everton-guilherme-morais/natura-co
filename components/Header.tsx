@@ -39,6 +39,10 @@ function Header() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
+  useEffect(() => {
+    const sessionId = getSessionId();
+  }, []);
+
   const [searchTerm, setSearchTerm] = useState(searchParams.get('name') || '');
   const { cart } = useCart();
 
