@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useCart } from '@/context/CartContext';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, Suspense } from "react";
 import { getSearchProducts } from '@/api/product/route';
 
 import {
@@ -42,10 +42,6 @@ export default function Header() {
   const [searchTerm, setSearchTerm] = useState(searchParams.get('name') || '');
   const { cart } = useCart();
 
-  useEffect(() => {
-    const sessionId = getSessionId();
-  }, []);
-
   function handleSearchName() {
     const name = new URLSearchParams(searchParams);
     if (searchTerm === '') {
@@ -70,7 +66,7 @@ export default function Header() {
   }
 
   return (
-    <>
+    <Suspense fallback={<div>Loading...</div>}>
       <header className="py-8 xl:py-9 text-white container mx-auto">
         <div className="flex flex-1 flex-row items-center w-full gap-2">
           {/* Logo e Select */}
@@ -123,6 +119,6 @@ export default function Header() {
         </div>
         <Separator className="my-4 bg-gray-300" />
       </header>
-    </>
+    </Suspense>
   );
 }
