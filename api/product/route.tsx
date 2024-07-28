@@ -7,7 +7,7 @@ import axios from 'axios';
 export const getSearchProducts = async (searchParams: URLSearchParams): Promise<Product[]> => {
   const query = searchParams.toString();
   try {
-    const response = await axios.get<Product[]>(`${process.env.URL_API}/products/search?${query}`, {
+    const response = await axios.get<Product[]>(`${process.env.NEXT_PUBLIC_URL_API}/products/search?${query}`, {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -25,7 +25,7 @@ export const getSearchProducts = async (searchParams: URLSearchParams): Promise<
 export const getProduct = async (id: string): Promise<Product> => {
   const idProduct = Number(id)
   try {
-    const response = await axios.get<Product>(`${process.env.URL_API}/products/${idProduct}`, {
+    const response = await axios.get<Product>(`${process.env.NEXT_PUBLIC_URL_API}/products/${idProduct}`, {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -47,7 +47,7 @@ export const postProductInCar = async (sessionId: string, products: Product[]) =
 
     console.log(payload, 'payload')
 
-    const response = await axios.post(`${process.env.URL_API}/products/cart`, payload, {
+    const response = await axios.post(`${process.env.NEXT_PUBLIC_URL_API}/products/cart`, payload, {
       headers: {
         'Content-Type': 'application/json',
       },
