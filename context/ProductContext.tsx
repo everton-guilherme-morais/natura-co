@@ -19,7 +19,7 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({ children }) =>
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('http://localhost:3001/products');
+      const response = await axios.get('https://web-production-b544b.up.railway.app/products');
       setProducts(response.data);
     } catch (error) {
       console.error('Erro ao buscar produtos:', error);
