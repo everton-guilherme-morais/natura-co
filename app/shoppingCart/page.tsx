@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { useCart } from "@/context/CartContext"
 import { postProductInCar } from '@/api/product/route'
+import { ScrollArea } from "@/components/ui/scroll-area"
 
 import { ArrowRight, Trash2, Plus, Minus } from "lucide-react"
 import Image from "next/image"
@@ -73,7 +74,7 @@ export default function ShoppingCart(){
             <NoItemCart />
           ) : (
             <>
-              <div className="border border-gray-300 rounded-xl h-auto w-auto sm:w-[630px] "> 
+              <ScrollArea className="border border-gray-300 rounded-xl h-[550px] w-auto sm:w-[630px] "> 
                 {cart.map((item, index) => {
                   return (
                     <>
@@ -101,7 +102,7 @@ export default function ShoppingCart(){
                     </>
                   )
                 })}
-              </div>
+              </ScrollArea>
               <div className="border border-gray-300 rounded-xl h-96 w-[auto] max-w-[450px] p-5"> 
                 <div className="flex flex-col items-start justify-between">
                   <p className="text-xl font-bold">Sumário</p>

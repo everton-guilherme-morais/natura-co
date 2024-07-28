@@ -9,11 +9,11 @@ export default function NoItemCart() {
         <p className="font-medium text-lg w-auto">
           Ei ei, sua sacola está vazia, você não viu que o {' '}
             <b>
-              <Link href={'/detailsProduct/20'}>
+              <Link href={'/detailsProduct/12'}>
               Natura Homem Emocion.e {' '}
               </Link>
             </b> 
-          está no precinho ? corre la!!
+          está no precinho? Corre lá!
         </p>
       </div>
     </div>

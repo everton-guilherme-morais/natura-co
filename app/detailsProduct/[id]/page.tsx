@@ -138,11 +138,11 @@ export default function DetailsProduct({ params }: { params: { id: string } }) {
             )}
         </div>
       </div>
-      <div className='container mx-auto p-10 flex flex-1 flex-col gap-3'>
+      <div className='container mx-auto lg:p-10 p-0 py-5 flex flex-1 flex-col gap-3'>
         <h2 className='font-semibold text-3xl'>Descrição:</h2>
         <p className='text-base text-gray-700'>{product.description}</p>
       </div>
-      <div className='container mx-auto p-10 flex flex-1 flex-col gap-3'>
+      <div className='container mx-auto lg:p-10 p-0 flex flex-1 flex-col gap-3'>
         <h2 className='font-semibold text-3xl'>Comentários:</h2>
         {product.assessments?.map((item, index) => (
           <div key={index} className='flex flex-1 flex-col gap-3'>
