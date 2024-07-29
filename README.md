@@ -14,27 +14,17 @@ Este projeto é um clone do site de e-commerce da Natura, desenvolvido em 4 dias
 
 ## Tecnologias Utilizadas
 
-### Frontend
-- **React**
-- **Next.js**
-- **TypeScript**
-- **JavaScript**
-- **Tailwind CSS**
-- **Shadcn**
-- **Lucide React**
-- **Swiper**
-- **Zod**
-- **Cloudflare** (para hospedagem das imagens dos produtos)
-- **Axios**
-
-### Backend
-- **NestJS**
-- **Node.js**
-- **TypeScript**
-- **Prisma**
-
-### Banco de Dados
-- **Banco Relacional** hospedado na **Vercel**
+- **React**: Biblioteca para criar interfaces de usuário.
+- **Next.js**: Framework para aplicações React com renderização do lado do servidor.
+- **TypeScript**: Superset de JavaScript para adicionar tipagem estática.
+- **JavaScript**: Linguagem de programação para lógica do frontend.
+- **Tailwind CSS**: Framework CSS para estilização responsiva e modular.
+- **Shadcn**: Componentes UI para React.
+- **Lucide React**: Biblioteca de ícones para React.
+- **Swiper**: Biblioteca de sliders/carrosséis.
+- **Zod**: Biblioteca de validação de esquemas.
+- **Cloudflare**: Para hospedagem das imagens dos produtos.
+- **Axios**: Cliente HTTP para fazer requisições ao backend.
 
 ## Páginas
 
@@ -96,7 +86,3 @@ Este projeto é um clone do site de e-commerce da Natura, desenvolvido em 4 dias
 - **Adicionar ao Carrinho**: Clique no botão "Adicionar ao Carrinho" na página de detalhes do produto para adicioná-lo ao carrinho.
 - **Visualizar Carrinho**: Clique no ícone do carrinho no cabeçalho para ver os produtos no seu carrinho.
 - **Finalizar Compra**: Clique no botão "Finalizar compra" no carrinho para completar a compra. Isso enviará os itens do carrinho para o backend e limpará o carrinho.
-
-## Conclusão
-
-Este projeto demonstra a implementação de um site de e-commerce simples com funcionalidades essenciais, como listagem de produtos, filtragem, visualização de detalhes, adição ao carrinho e finalização da compra. O projeto é totalmente responsivo e usa tecnologias web modernas para garantir uma experiência de usuário suave.
