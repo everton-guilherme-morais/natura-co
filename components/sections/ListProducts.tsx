@@ -72,8 +72,12 @@ function ListProducts(){
                           {item.stars} de 5
                         </div>
                         <div className="flex flex-row justify-between gap-3">
-                          <span className="font-extrabold text-xl"> R$ <b>{item.priceWithDiscount}</b></span>
-                          <s>R$ {item.priceInitial}</s>
+                          <span className="font-extrabold text-xl">
+                            R$ <b>{item.priceWithDiscount}</b>
+                          </span>
+                          {item.priceWithDiscount !== item.priceInitial && (
+                            <s>R$ {item.priceInitial}</s>
+                          )}
                         </div>
                       </div>
                     </div>

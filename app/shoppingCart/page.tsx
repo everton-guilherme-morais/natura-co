@@ -18,18 +18,20 @@ function ShoppingCart(){
   const { cart, removeFromCart, updateQuantity, clearCart } = useCart();
   const router = useRouter();
 
+  const parsePrice = (price: string) => parseFloat(price.replace(',', '.'));
+
   const calculateSubtotal = () => {
-    return cart.reduce((acc, product) => acc + parseFloat(product.priceWithDiscount) * product.quantity, 0).toFixed(2);
+    return cart.reduce((acc, product) => acc + parsePrice(product.priceWithDiscount) * product.quantity, 0);
   };
 
   const calculateTotalDiscount = () => {
-    return cart.reduce((acc, product) => acc + (parseFloat(product.priceInitial) - parseFloat(product.priceWithDiscount)) * product.quantity, 0).toFixed(2);
+    return cart.reduce((acc, product) => acc + (parsePrice(product.priceInitial) - parsePrice(product.priceWithDiscount)) * product.quantity, 0);
   };
 
   const shippingCost = 15.00;
 
-  const subtotal = parseFloat(calculateSubtotal());
-  const totalDiscount = parseFloat(calculateTotalDiscount());
+  const subtotal = calculateSubtotal();
+  const totalDiscount = calculateTotalDiscount();
   const total = subtotal - totalDiscount + shippingCost;
 
   const handleCheckout = async () => {
@@ -116,21 +118,21 @@ function ShoppingCart(){
                   <p className="text-xl font-bold">Sumário</p>
                   <div className="flex flex-1 flex-row items-center py-1 justify-between w-full">
                     <p className="text-[#D3D3D3]">Subtotal</p>
-                    <b>R$ {subtotal.toFixed(2)}</b>
+                    <b>R$ {subtotal.toFixed(2).replace('.', ',')}</b>
                   </div>
                   <div className="flex flex-1 flex-row items-center py-1 justify-between w-full">
-                    <p className="text-[#D3D3D3]">Desconto (-20%)</p>
-                    <b className="text-red-500">- R$ {totalDiscount.toFixed(2)}</b>
+                    <p className="text-[#D3D3D3]">Desconto</p>
+                    <b className="text-red-500">- R$ {totalDiscount.toFixed(2).replace('.', ',')}</b>
                   </div>
                   <div className="flex flex-1 flex-row items-center py-1 justify-between w-full">
                     <p className="text-[#D3D3D3]">Frete</p>
-                    <b>R$ {shippingCost.toFixed(2)}</b>
+                    <b>R$ {shippingCost.toFixed(2).replace('.', ',')}</b>
                   </div>
                   <Separator className="my-4 bg-gray-300" />
 
                   <div className="flex flex-1 flex-row items-center py-1 justify-between w-full">
                     <p className="">Total</p>
-                    <b className="text-lg">R$ {total.toFixed(2)}</b>
+                    <b className="text-lg">R$ {total.toFixed(2).replace('.', ',')}</b>
                   </div>
                   <div className="flex flex-1 flex-row items-center py-1 gap-3 w-full">
                     <Input type="email" placeholder="O que está buscando hoje ?" />
