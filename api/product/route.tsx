@@ -44,9 +44,7 @@ export const postProductInCar = async (sessionId: string, products: Product[]) =
   const payload = { sessionId, products };
   try {
     cartSchema.parse(payload);
-
-    console.log(payload, 'payload')
-
+    
     const response = await axios.post(`${process.env.NEXT_PUBLIC_URL_API}/products/cart`, payload, {
       headers: {
         'Content-Type': 'application/json',
