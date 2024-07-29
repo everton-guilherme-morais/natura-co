@@ -135,7 +135,7 @@ function ShoppingCart(){
                     <b className="text-lg">R$ {total.toFixed(2).replace('.', ',')}</b>
                   </div>
                   <div className="flex flex-1 flex-row items-center py-1 gap-3 w-full">
-                    <Input type="email" placeholder="O que está buscando hoje ?" />
+                    <Input type="email" placeholder="Digite seu cupom" />
                     <Button className="rounded-full">Aplicar</Button>
                   </div>
                 </div>
